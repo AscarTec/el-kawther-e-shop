@@ -143,6 +143,10 @@ const translations: Record<Language, Record<string, string>> = {
     'admin.addProduct': 'إضافة منتج',
     'admin.editProduct': 'تعديل منتج',
     'admin.deleteProduct': 'حذف منتج',
+    'admin.pending': 'قيد الانتظار',
+    'admin.confirmed': 'مؤكد',
+    'admin.shipped': 'تم الشحن',
+    'admin.delivered': 'تم التوصيل',
     
     // Common
     'common.currency': 'ج.م',
