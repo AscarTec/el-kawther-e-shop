@@ -1,5 +1,29 @@
 import { Category, Product, Coupon } from '@/types';
 
+// Import product images
+import frozenMixedVegetables from '@/assets/products/frozen-mixed-vegetables.jpg';
+import frozenPeas from '@/assets/products/frozen-peas.jpg';
+import frozenOkra from '@/assets/products/frozen-okra.jpg';
+import frozenMolokhia from '@/assets/products/frozen-molokhia.jpg';
+import frozenFries from '@/assets/products/frozen-fries.jpg';
+import frozenSpinach from '@/assets/products/frozen-spinach.jpg';
+import beefCubes from '@/assets/products/beef-cubes.jpg';
+import chickenBreast from '@/assets/products/chicken-breast.jpg';
+import mincedBeef from '@/assets/products/minced-beef.jpg';
+import lambChops from '@/assets/products/lamb-chops.jpg';
+import wholeChicken from '@/assets/products/whole-chicken.jpg';
+import frozenKofta from '@/assets/products/frozen-kofta.jpg';
+import egyptianRice from '@/assets/products/egyptian-rice.jpg';
+import pastaPenne from '@/assets/products/pasta-penne.jpg';
+import oliveOil from '@/assets/products/olive-oil.jpg';
+import sugar from '@/assets/products/sugar.jpg';
+import lentils from '@/assets/products/lentils.jpg';
+import flour from '@/assets/products/flour.jpg';
+import sunflowerOil from '@/assets/products/sunflower-oil.jpg';
+import milk from '@/assets/products/milk.jpg';
+import cheese from '@/assets/products/cheese.jpg';
+import yogurt from '@/assets/products/yogurt.jpg';
+
 export const categories: Category[] = [
   {
     id: 'frozen',
@@ -25,10 +49,18 @@ export const categories: Category[] = [
     name_ar: 'بقالة',
     name_en: 'Grocery',
   },
+  {
+    id: 'dairy',
+    slug: 'dairy',
+    colorToken: 'dairy',
+    icon: 'milk',
+    name_ar: 'ألبان',
+    name_en: 'Dairy',
+  },
 ];
 
 export const products: Product[] = [
-  // FROZEN (6 products)
+  // FROZEN (7 products)
   {
     id: 'frozen-1',
     slug: 'frozen-mixed-vegetables',
@@ -39,7 +71,7 @@ export const products: Product[] = [
     categoryId: 'frozen',
     price: 45,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [frozenMixedVegetables],
     sku: 'FRZ-MIX-001',
     weightOptions: [
       { label_ar: '400 جرام', label_en: '400g', grams: 400, priceDelta: 0 },
@@ -53,16 +85,16 @@ export const products: Product[] = [
   },
   {
     id: 'frozen-2',
-    slug: 'frozen-peas-carrots',
-    name_ar: 'بسلة وجزر مجمد',
-    name_en: 'Frozen Peas & Carrots',
-    desc_ar: 'بسلة خضراء وجزر مكعبات مجمدة عالية الجودة',
-    desc_en: 'High quality frozen green peas and diced carrots',
+    slug: 'frozen-green-peas',
+    name_ar: 'بسلة خضراء مجمدة',
+    name_en: 'Frozen Green Peas',
+    desc_ar: 'بسلة خضراء طازجة مجمدة عالية الجودة',
+    desc_en: 'High quality fresh frozen green peas',
     categoryId: 'frozen',
     price: 35,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
-    sku: 'FRZ-PC-002',
+    images: [frozenPeas],
+    sku: 'FRZ-PEA-002',
     weightOptions: [
       { label_ar: '400 جرام', label_en: '400g', grams: 400, priceDelta: 0 },
       { label_ar: '1 كيلو', label_en: '1kg', grams: 1000, priceDelta: 50 },
@@ -82,7 +114,7 @@ export const products: Product[] = [
     categoryId: 'frozen',
     price: 55,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [frozenFries],
     sku: 'FRZ-FF-003',
     weightOptions: [
       { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 0 },
@@ -104,7 +136,7 @@ export const products: Product[] = [
     categoryId: 'frozen',
     price: 30,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [frozenSpinach],
     sku: 'FRZ-SPN-004',
     weightOptions: [
       { label_ar: '400 جرام', label_en: '400g', grams: 400, priceDelta: 0 },
@@ -125,7 +157,7 @@ export const products: Product[] = [
     categoryId: 'frozen',
     price: 65,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [frozenOkra],
     sku: 'FRZ-OKR-005',
     weightOptions: [
       { label_ar: '400 جرام', label_en: '400g', grams: 400, priceDelta: 0 },
@@ -146,7 +178,7 @@ export const products: Product[] = [
     categoryId: 'frozen',
     price: 40,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [frozenMolokhia],
     sku: 'FRZ-MLK-006',
     weightOptions: [
       { label_ar: '400 جرام', label_en: '400g', grams: 400, priceDelta: 0 },
@@ -169,7 +201,7 @@ export const products: Product[] = [
     categoryId: 'meat',
     price: 180,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [beefCubes],
     sku: 'MT-BCB-001',
     weightOptions: [
       { label_ar: '400 جرام', label_en: '400g', grams: 400, priceDelta: 0 },
@@ -191,7 +223,7 @@ export const products: Product[] = [
     categoryId: 'meat',
     price: 120,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [chickenBreast],
     sku: 'MT-CHB-002',
     weightOptions: [
       { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 0 },
@@ -213,7 +245,7 @@ export const products: Product[] = [
     categoryId: 'meat',
     price: 160,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [mincedBeef],
     sku: 'MT-MBF-003',
     weightOptions: [
       { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 0 },
@@ -234,7 +266,7 @@ export const products: Product[] = [
     categoryId: 'meat',
     price: 280,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [lambChops],
     sku: 'MT-LMC-004',
     weightOptions: [
       { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 0 },
@@ -255,7 +287,7 @@ export const products: Product[] = [
     categoryId: 'meat',
     price: 95,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [wholeChicken],
     sku: 'MT-WCH-005',
     weightOptions: [
       { label_ar: '1 كيلو', label_en: '1kg', grams: 1000, priceDelta: 0 },
@@ -276,7 +308,7 @@ export const products: Product[] = [
     categoryId: 'meat',
     price: 140,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [frozenKofta],
     sku: 'MT-KFT-006',
     weightOptions: [
       { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 0 },
@@ -288,7 +320,7 @@ export const products: Product[] = [
     tags: ['halal', 'frozen', 'beef', 'ready'],
   },
 
-  // GROCERY (6 products)
+  // GROCERY (7 products)
   {
     id: 'grocery-1',
     slug: 'egyptian-rice',
@@ -299,7 +331,7 @@ export const products: Product[] = [
     categoryId: 'grocery',
     price: 45,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [egyptianRice],
     sku: 'GRC-RIC-001',
     weightOptions: [
       { label_ar: '1 كيلو', label_en: '1kg', grams: 1000, priceDelta: 0 },
@@ -321,7 +353,7 @@ export const products: Product[] = [
     categoryId: 'grocery',
     price: 25,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [pastaPenne],
     sku: 'GRC-PAS-002',
     weightOptions: [
       { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 0 },
@@ -342,7 +374,7 @@ export const products: Product[] = [
     categoryId: 'grocery',
     price: 180,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [oliveOil],
     sku: 'GRC-OIL-003',
     weightOptions: [
       { label_ar: '500 مل', label_en: '500ml', grams: 500, priceDelta: 0 },
@@ -363,7 +395,7 @@ export const products: Product[] = [
     categoryId: 'grocery',
     price: 35,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [sugar],
     sku: 'GRC-SUG-004',
     weightOptions: [
       { label_ar: '1 كيلو', label_en: '1kg', grams: 1000, priceDelta: 0 },
@@ -385,7 +417,7 @@ export const products: Product[] = [
     categoryId: 'grocery',
     price: 55,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [lentils],
     sku: 'GRC-LNT-005',
     weightOptions: [
       { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 0 },
@@ -406,7 +438,7 @@ export const products: Product[] = [
     categoryId: 'grocery',
     price: 40,
     currency: 'EGP',
-    images: ['/placeholder.svg'],
+    images: [flour],
     sku: 'GRC-FLR-006',
     weightOptions: [
       { label_ar: '1 كيلو', label_en: '1kg', grams: 1000, priceDelta: 0 },
@@ -417,6 +449,94 @@ export const products: Product[] = [
     isFrozen: false,
     badges: ['bestseller'],
     tags: ['halal', 'baking', 'staple'],
+  },
+  {
+    id: 'grocery-7',
+    slug: 'sunflower-oil',
+    name_ar: 'زيت عباد الشمس',
+    name_en: 'Sunflower Oil',
+    desc_ar: 'زيت عباد الشمس نقي للطبخ والقلي',
+    desc_en: 'Pure sunflower oil for cooking and frying',
+    categoryId: 'grocery',
+    price: 85,
+    currency: 'EGP',
+    images: [sunflowerOil],
+    sku: 'GRC-SFL-007',
+    weightOptions: [
+      { label_ar: '1 لتر', label_en: '1L', grams: 1000, priceDelta: 0 },
+      { label_ar: '2 لتر', label_en: '2L', grams: 2000, priceDelta: 70 },
+      { label_ar: '5 لتر', label_en: '5L', grams: 5000, priceDelta: 240 },
+    ],
+    stockQty: 90,
+    isFrozen: false,
+    badges: ['new'],
+    tags: ['halal', 'oil', 'cooking'],
+  },
+
+  // DAIRY (3 products)
+  {
+    id: 'dairy-1',
+    slug: 'fresh-milk',
+    name_ar: 'لبن طازج',
+    name_en: 'Fresh Milk',
+    desc_ar: 'لبن طازج كامل الدسم',
+    desc_en: 'Fresh full cream milk',
+    categoryId: 'dairy',
+    price: 25,
+    currency: 'EGP',
+    images: [milk],
+    sku: 'DRY-MLK-001',
+    weightOptions: [
+      { label_ar: '1 لتر', label_en: '1L', grams: 1000, priceDelta: 0 },
+      { label_ar: '2 لتر', label_en: '2L', grams: 2000, priceDelta: 22 },
+    ],
+    stockQty: 100,
+    isFrozen: false,
+    badges: ['bestseller'],
+    tags: ['halal', 'dairy', 'fresh'],
+  },
+  {
+    id: 'dairy-2',
+    slug: 'white-cheese',
+    name_ar: 'جبنة بيضاء',
+    name_en: 'White Cheese',
+    desc_ar: 'جبنة بيضاء طازجة فاخرة',
+    desc_en: 'Premium fresh white cheese',
+    categoryId: 'dairy',
+    price: 45,
+    currency: 'EGP',
+    images: [cheese],
+    sku: 'DRY-CHS-002',
+    weightOptions: [
+      { label_ar: '250 جرام', label_en: '250g', grams: 250, priceDelta: 0 },
+      { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 40 },
+      { label_ar: '1 كيلو', label_en: '1kg', grams: 1000, priceDelta: 85 },
+    ],
+    stockQty: 75,
+    isFrozen: false,
+    badges: ['new'],
+    tags: ['halal', 'dairy', 'cheese'],
+  },
+  {
+    id: 'dairy-3',
+    slug: 'fruit-yogurt',
+    name_ar: 'زبادي بالفواكه',
+    name_en: 'Fruit Yogurt',
+    desc_ar: 'زبادي طازج بالفواكه المشكلة',
+    desc_en: 'Fresh yogurt with mixed fruits',
+    categoryId: 'dairy',
+    price: 15,
+    currency: 'EGP',
+    images: [yogurt],
+    sku: 'DRY-YGT-003',
+    weightOptions: [
+      { label_ar: '200 جرام', label_en: '200g', grams: 200, priceDelta: 0 },
+      { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 25 },
+    ],
+    stockQty: 150,
+    isFrozen: false,
+    badges: ['offer'],
+    tags: ['halal', 'dairy', 'yogurt', 'fruit'],
   },
 ];
 

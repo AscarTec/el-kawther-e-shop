@@ -60,6 +60,7 @@ export default {
         frozen: "hsl(var(--frozen))",
         meat: "hsl(var(--meat))",
         grocery: "hsl(var(--grocery))",
+        dairy: "hsl(var(--dairy))",
         // Brand colors
         burgundy: "hsl(var(--brand-burgundy))",
         gold: "hsl(var(--brand-gold))",
