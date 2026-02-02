@@ -19,6 +19,13 @@ import OrdersPage from "./pages/OrdersPage";
 import LoginPage from "./pages/LoginPage";
 import NotFound from "./pages/NotFound";
 
+// Admin Pages
+import AdminLayout from "./pages/admin/AdminLayout";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminOrders from "./pages/admin/AdminOrders";
+import AdminProducts from "./pages/admin/AdminProducts";
+import AdminCoupons from "./pages/admin/AdminCoupons";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -41,6 +48,15 @@ const App = () => (
                 <Route path="/order/:orderId" element={<OrderDetailPage />} />
                 <Route path="/orders" element={<OrdersPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                
+                {/* Admin Routes */}
+                <Route path="/admin" element={<AdminLayout />}>
+                  <Route index element={<AdminDashboard />} />
+                  <Route path="orders" element={<AdminOrders />} />
+                  <Route path="products" element={<AdminProducts />} />
+                  <Route path="coupons" element={<AdminCoupons />} />
+                </Route>
+                
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
