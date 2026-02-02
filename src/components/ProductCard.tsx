@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Snowflake, Drumstick, Wheat, ShoppingCart } from 'lucide-react';
+import { Snowflake, Drumstick, Wheat, ShoppingCart, Milk } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -17,12 +17,14 @@ const categoryColors = {
   frozen: 'bg-frozen',
   meat: 'bg-meat',
   grocery: 'bg-grocery',
+  dairy: 'bg-dairy',
 };
 
 const categoryIcons = {
   frozen: Snowflake,
   meat: Drumstick,
   grocery: Wheat,
+  dairy: Milk,
 };
 
 export function ProductCard({ product }: ProductCardProps) {

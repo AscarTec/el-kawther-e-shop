@@ -3,8 +3,8 @@
 export interface Category {
   id: string;
   slug: string;
-  colorToken: 'frozen' | 'meat' | 'grocery';
-  icon: 'snowflake' | 'meat' | 'wheat';
+  colorToken: 'frozen' | 'meat' | 'grocery' | 'dairy';
+  icon: 'snowflake' | 'meat' | 'wheat' | 'milk';
   name_ar: string;
   name_en: string;
 }

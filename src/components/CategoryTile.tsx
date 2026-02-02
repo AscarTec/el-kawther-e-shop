@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Snowflake, Drumstick, Wheat } from 'lucide-react';
+import { Snowflake, Drumstick, Wheat, Milk } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Category } from '@/types';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -15,18 +15,21 @@ const categoryBgColors = {
   frozen: 'bg-frozen/10 hover:bg-frozen/20',
   meat: 'bg-meat/10 hover:bg-meat/20',
   grocery: 'bg-grocery/10 hover:bg-grocery/20',
+  dairy: 'bg-dairy/10 hover:bg-dairy/20',
 };
 
 const categoryTextColors = {
   frozen: 'text-frozen',
   meat: 'text-meat',
   grocery: 'text-grocery',
+  dairy: 'text-dairy',
 };
 
 const categoryIcons = {
   frozen: Snowflake,
   meat: Drumstick,
   grocery: Wheat,
+  dairy: Milk,
 };
 
 export function CategoryTile({ category, productCount }: CategoryTileProps) {
