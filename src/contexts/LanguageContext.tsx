@@ -21,6 +21,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.home': 'الرئيسية',
     'nav.categories': 'الأقسام',
     'nav.products': 'المنتجات',
+    'nav.companies': 'الشركات',
     'nav.cart': 'السلة',
     'nav.account': 'حسابي',
     'nav.admin': 'لوحة التحكم',
@@ -74,6 +75,7 @@ const translations: Record<Language, Record<string, string>> = {
     'filter.title': 'الفلاتر',
     'filter.search': 'بحث...',
     'filter.category': 'القسم',
+    'filter.company': 'الشركة',
     'filter.price': 'السعر',
     'filter.availability': 'التوفر',
     'filter.inStockOnly': 'المتوفر فقط',
@@ -84,6 +86,11 @@ const translations: Record<Language, Record<string, string>> = {
     'filter.sort.priceDesc': 'السعر: من الأعلى',
     'filter.sort.bestselling': 'الأكثر مبيعاً',
     'filter.clear': 'مسح الفلاتر',
+
+    // Companies
+    'companies.title': 'الشركات',
+    'companies.products': 'منتجات الشركة',
+    'company.all': 'جميع الشركات',
     
     // Cart
     'cart.title': 'سلة التسوق',
@@ -186,6 +193,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.home': 'Home',
     'nav.categories': 'Categories',
     'nav.products': 'Products',
+    'nav.companies': 'Companies',
     'nav.cart': 'Cart',
     'nav.account': 'Account',
     'nav.admin': 'Dashboard',
@@ -239,6 +247,7 @@ const translations: Record<Language, Record<string, string>> = {
     'filter.title': 'Filters',
     'filter.search': 'Search...',
     'filter.category': 'Category',
+    'filter.company': 'Company',
     'filter.price': 'Price',
     'filter.availability': 'Availability',
     'filter.inStockOnly': 'In Stock Only',
@@ -249,6 +258,11 @@ const translations: Record<Language, Record<string, string>> = {
     'filter.sort.priceDesc': 'Price: High to Low',
     'filter.sort.bestselling': 'Best Selling',
     'filter.clear': 'Clear Filters',
+
+    // Companies
+    'companies.title': 'Companies',
+    'companies.products': 'Company products',
+    'company.all': 'All companies',
     
     // Cart
     'cart.title': 'Shopping Cart',

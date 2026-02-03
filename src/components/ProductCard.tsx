@@ -29,8 +29,9 @@ const categoryIcons = {
 
 export function ProductCard({ product }: ProductCardProps) {
   const { t, isArabic } = useLanguage();
-  const { addToCart, getCategoryById } = useStore();
+  const { addToCart, getCategoryById, getCompanyById } = useStore();
   const category = getCategoryById(product.categoryId);
+  const company = getCompanyById(product.companyId);
 
   const name = isArabic ? product.name_ar : product.name_en;
   const baseWeight = product.weightOptions[0];
@@ -109,6 +110,12 @@ export function ProductCard({ product }: ProductCardProps) {
           <h3 className="font-semibold text-foreground line-clamp-2 min-h-[2.5rem]">
             {name}
           </h3>
+
+          {company && (
+            <p className="text-xs text-muted-foreground">
+              {isArabic ? company.name_ar : company.name_en}
+            </p>
+          )}
 
           {/* Weight */}
           <p className="text-sm text-muted-foreground">{weightLabel}</p>

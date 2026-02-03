@@ -13,6 +13,7 @@ import ProductsPage from "./pages/ProductsPage";
 import ProductsGalleryPage from "./pages/ProductsGalleryPage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import CategoriesPage from "./pages/CategoriesPage";
+import CompaniesPage from "./pages/CompaniesPage";
 import CartPage from "./pages/CartPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import OrderSuccessPage from "./pages/OrderSuccessPage";
@@ -47,6 +48,7 @@ const App = () => (
                 <Route path="/products-gallery" element={<ProductsGalleryPage />} />
                 <Route path="/product/:slug" element={<ProductDetailPage />} />
                 <Route path="/categories" element={<CategoriesPage />} />
+                <Route path="/companies" element={<CompaniesPage />} />
                 <Route path="/cart" element={<CartPage />} />
                 <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/order-success/:orderId" element={<OrderSuccessPage />} />

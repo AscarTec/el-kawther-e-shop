@@ -16,11 +16,12 @@ type SortOption = 'newest' | 'priceAsc' | 'priceDesc' | 'bestselling';
 
 export default function ProductsPage() {
   const { t, isArabic } = useLanguage();
-  const { products, categories } = useStore();
+  const { products, categories, companies } = useStore();
   const [searchParams, setSearchParams] = useSearchParams();
   
   const [search, setSearch] = useState(searchParams.get('search') || '');
   const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'all');
+  const [selectedCompany, setSelectedCompany] = useState(searchParams.get('company') || 'all');
   const [inStockOnly, setInStockOnly] = useState(false);
   const [frozenOnly, setFrozenOnly] = useState(false);
   const [sortBy, setSortBy] = useState<SortOption>((searchParams.get('sort') as SortOption) || 'newest');
@@ -42,6 +43,11 @@ export default function ProductsPage() {
     // Category filter
     if (selectedCategory && selectedCategory !== 'all') {
       result = result.filter(p => p.categoryId === selectedCategory);
+    }
+
+    // Company filter
+    if (selectedCompany && selectedCompany !== 'all') {
+      result = result.filter(p => p.companyId === selectedCompany);
     }
 
     // In stock filter
@@ -79,18 +85,19 @@ export default function ProductsPage() {
     }
 
     return result;
-  }, [products, search, selectedCategory, inStockOnly, frozenOnly, sortBy]);
+  }, [products, search, selectedCategory, selectedCompany, inStockOnly, frozenOnly, sortBy]);
 
   const clearFilters = () => {
     setSearch('');
     setSelectedCategory('all');
+    setSelectedCompany('all');
     setInStockOnly(false);
     setFrozenOnly(false);
     setSortBy('newest');
     setSearchParams({});
   };
 
-  const hasFilters = search || selectedCategory !== 'all' || inStockOnly || frozenOnly;
+  const hasFilters = search || selectedCategory !== 'all' || selectedCompany !== 'all' || inStockOnly || frozenOnly;
 
   const FilterContent = () => (
     <div className="space-y-6">
@@ -106,6 +113,24 @@ export default function ProductsPage() {
             {categories.map(cat => (
               <SelectItem key={cat.id} value={cat.id}>
                 {isArabic ? cat.name_ar : cat.name_en}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+
+      {/* Company Filter */}
+      <div className="space-y-3">
+        <Label className="text-sm font-medium">{t('filter.company')}</Label>
+        <Select value={selectedCompany} onValueChange={setSelectedCompany}>
+          <SelectTrigger>
+            <SelectValue />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="all">{t('company.all')}</SelectItem>
+            {companies.map(company => (
+              <SelectItem key={company.id} value={company.id}>
+                {isArabic ? company.name_ar : company.name_en}
               </SelectItem>
             ))}
           </SelectContent>

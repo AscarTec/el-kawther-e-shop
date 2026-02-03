@@ -50,6 +50,7 @@ const EMPTY_PRODUCT: Partial<Product> = {
   desc_ar: '',
   desc_en: '',
   categoryId: 'frozen',
+  companyId: 'el-kawther',
   price: 0,
   currency: 'EGP',
   images: [],
@@ -63,7 +64,7 @@ const EMPTY_PRODUCT: Partial<Product> = {
 
 export default function AdminProducts() {
   const { t, isArabic } = useLanguage();
-  const { products, categories, addProduct, updateProduct, deleteProduct } = useStore();
+  const { products, categories, companies, addProduct, updateProduct, deleteProduct } = useStore();
   const [searchQuery, setSearchQuery] = useState('');
   const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [editingProduct, setEditingProduct] = useState<Partial<Product> | null>(null);
@@ -333,7 +334,7 @@ export default function AdminProducts() {
                 </div>
               </div>
 
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-3 gap-4">
                 <div className="space-y-2">
                   <Label>{t('filter.category')}</Label>
                   <Select
@@ -347,6 +348,24 @@ export default function AdminProducts() {
                       {categories.map(cat => (
                         <SelectItem key={cat.id} value={cat.id}>
                           {isArabic ? cat.name_ar : cat.name_en}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div className="space-y-2">
+                  <Label>{t('filter.company')}</Label>
+                  <Select
+                    value={editingProduct.companyId || 'el-kawther'}
+                    onValueChange={(value) => setEditingProduct({ ...editingProduct, companyId: value })}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {companies.map(company => (
+                        <SelectItem key={company.id} value={company.id}>
+                          {isArabic ? company.name_ar : company.name_en}
                         </SelectItem>
                       ))}
                     </SelectContent>

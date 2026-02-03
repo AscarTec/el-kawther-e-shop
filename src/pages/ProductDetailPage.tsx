@@ -17,7 +17,7 @@ export default function ProductDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { t, isArabic } = useLanguage();
-  const { products, getCategoryById, addToCart, getProductsByCategory } = useStore();
+  const { products, getCategoryById, getCompanyById, addToCart, getProductsByCategory } = useStore();
 
   const product = products.find(p => p.slug === slug);
   const [selectedWeightIndex, setSelectedWeightIndex] = useState(0);
@@ -38,6 +38,7 @@ export default function ProductDetailPage() {
   }
 
   const category = getCategoryById(product.categoryId);
+  const company = getCompanyById(product.companyId);
   const selectedWeight = product.weightOptions[selectedWeightIndex];
   const currentPrice = product.price + (selectedWeight?.priceDelta || 0);
   const isOutOfStock = product.stockQty === 0;
@@ -113,9 +114,14 @@ export default function ProductDetailPage() {
 
           {/* Product Info */}
           <div className="space-y-6">
-            {/* Category */}
-            <div className="text-sm text-muted-foreground">
-              {isArabic ? category?.name_ar : category?.name_en}
+            {/* Category & Company */}
+            <div className="text-sm text-muted-foreground flex flex-wrap gap-2">
+              <span>{isArabic ? category?.name_ar : category?.name_en}</span>
+              {company && (
+                <span className="text-muted-foreground">
+                  · {isArabic ? company.name_ar : company.name_en}
+                </span>
+              )}
             </div>
 
             {/* Title */}

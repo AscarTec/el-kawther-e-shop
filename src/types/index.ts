@@ -9,6 +9,15 @@ export interface Category {
   name_en: string;
 }
 
+export interface Company {
+  id: string;
+  slug: string;
+  name_ar: string;
+  name_en: string;
+  description_ar: string;
+  description_en: string;
+}
+
 export interface WeightOption {
   label_ar: string;
   label_en: string;
@@ -24,6 +33,7 @@ export interface Product {
   desc_ar: string;
   desc_en: string;
   categoryId: string;
+  companyId: string;
   price: number;
   compareAtPrice?: number;
   currency: string;

@@ -1,10 +1,19 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
-import { 
-  Category, Product, Cart, CartItem, Order, Coupon, User,
-  CartItemWithProduct, CartTotals 
+import {
+  Category,
+  Company,
+  Product,
+  Cart,
+  CartItem,
+  Order,
+  Coupon,
+  User,
+  CartItemWithProduct,
+  CartTotals,
 } from '@/types';
 import { 
   categories as seedCategories, 
+  companies as seedCompanies,
   products as seedProducts, 
   coupons as seedCoupons,
   SHIPPING_FEE,
@@ -16,6 +25,11 @@ interface StoreContextType {
   // Categories
   categories: Category[];
   getCategoryById: (id: string) => Category | undefined;
+
+  // Companies
+  companies: Company[];
+  getCompanyById: (id: string) => Company | undefined;
+  getProductsByCompany: (companyId: string) => Product[];
   
   // Products
   products: Product[];
@@ -83,7 +97,10 @@ function saveToStorage<T>(key: string, data: T): void {
 export function StoreProvider({ children }: { children: ReactNode }) {
   // State
   const [products, setProducts] = useState<Product[]>(() => 
-    loadFromStorage(STORAGE_KEYS.products, seedProducts)
+    loadFromStorage(STORAGE_KEYS.products, seedProducts).map(product => ({
+      companyId: product.companyId || 'el-kawther',
+      ...product,
+    }))
   );
   const [cart, setCart] = useState<Cart>(() => 
     loadFromStorage(STORAGE_KEYS.cart, { items: [] })
@@ -108,6 +125,12 @@ export function StoreProvider({ children }: { children: ReactNode }) {
   // Categories (static)
   const categories = seedCategories;
   const getCategoryById = useCallback((id: string) => categories.find(c => c.id === id), []);
+
+  // Companies (static)
+  const companies = seedCompanies;
+  const getCompanyById = useCallback((id: string) => companies.find(c => c.id === id), []);
+  const getProductsByCompany = useCallback((companyId: string) =>
+    products.filter(p => p.companyId === companyId), [products]);
 
   // Products
   const getProductById = useCallback((id: string) => products.find(p => p.id === id), [products]);
@@ -318,6 +341,9 @@ export function StoreProvider({ children }: { children: ReactNode }) {
     <StoreContext.Provider value={{
       categories,
       getCategoryById,
+      companies,
+      getCompanyById,
+      getProductsByCompany,
       products,
       getProductById,
       getProductsByCategory,
