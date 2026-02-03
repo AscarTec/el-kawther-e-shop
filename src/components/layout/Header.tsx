@@ -33,11 +33,13 @@ export function Header() {
       <div className="container flex h-16 items-center justify-between gap-4">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2">
-          <img 
-            src={isDark ? logoDark : logoLight} 
-            alt={t('brand.name')}
-            className="h-10 w-auto"
-          />
+        <img 
+  data-header-logo
+  src={isDark ? logoDark : logoLight} 
+  alt={t('brand.name')}
+  className="h-10 w-auto"
+/>
+
         </Link>
 
         {/* Desktop Navigation */}

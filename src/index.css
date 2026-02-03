@@ -197,7 +197,70 @@
   
   /* Hero section styling */
   .hero-gradient {
-    background: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(342 70% 22%) 100%);
+    background:
+      radial-gradient(120% 120% at 10% 10%, hsla(152, 16%, 42%, 0.35), transparent 60%),
+      radial-gradient(120% 120% at 90% 20%, hsla(22, 86%, 15%, 0.35), transparent 60%),
+      linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(336 70% 28%) 55%, hsl(22 86% 52%) 100%);
+  }
+
+  .hero-carousel {
+    position: relative;
+    height: 18rem;
+    width: 100%;
+    border-radius: 1.75rem;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.65);
+  }
+
+  @media (min-width: 768px) {
+    .hero-carousel {
+      height: 20rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .hero-carousel {
+      height: 24rem;
+    }
+  }
+
+  .hero-slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover, 220px, cover;
+    background-position: center;
+    background-blend-mode: screen, overlay, normal;
+    animation: heroFade 18s infinite;
+    opacity: 0;
+    transform: scale(1.02);
+  }
+
+  .hero-side-image {
+    display: none;
+    position: absolute;
+    top: 50%;
+    width: 220px;
+    height: auto;
+    opacity: 0.35;
+    filter: drop-shadow(0 20px 35px rgba(15, 23, 42, 0.35));
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  @media (min-width: 1024px) {
+    .hero-side-image {
+      display: block;
+    }
+  }
+
+  .hero-side-left {
+    left: -3rem;
+    transform: translateY(-50%) rotate(-8deg);
+  }
+
+  .hero-side-right {
+    right: -3rem;
+    transform: translateY(-50%) rotate(8deg);
   }
   
   /* Gold accent styling */
@@ -252,6 +315,44 @@
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+/* Splash animations */
+@keyframes splash-flash {
+  0%, 100% { opacity: 0; transform: scale(0.6); }
+  20% { opacity: 1; transform: scale(1); }
+  40% { opacity: 0.2; transform: scale(1.15); }
+  60% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes splash-logo-in {
+  0% { opacity: 0; transform: translateY(10px) scale(0.92); filter: blur(6px); }
+  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+}
+
+@keyframes splash-logo-move-up {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  100% { transform: translate(-50%, -170%) scale(0.55); opacity: 0; }
+}
+
+  @keyframes heroFade {
+    0% {
+      opacity: 0;
+      transform: scale(1.02);
+    }
+    6% {
+      opacity: 1;
+    }
+    30% {
+      opacity: 1;
+    }
+    36% {
+      opacity: 0;
+      transform: scale(1.06);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.06);
     }
   }
 }

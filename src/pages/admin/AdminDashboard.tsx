@@ -183,6 +183,9 @@ export default function AdminDashboard() {
                       <img 
                         src={product.images[0]} 
                         alt="" 
+                        onError={(event) => {
+                          event.currentTarget.src = '/placeholder.svg';
+                        }}
                         className="w-10 h-10 rounded object-cover"
                       />
                       <div>

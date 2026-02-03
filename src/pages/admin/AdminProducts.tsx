@@ -199,6 +199,9 @@ export default function AdminProducts() {
                       <img
                         src={product.images[0]}
                         alt=""
+                        onError={(event) => {
+                          event.currentTarget.src = '/placeholder.svg';
+                        }}
                         className="w-12 h-12 rounded-lg object-cover"
                       />
                     </TableCell>

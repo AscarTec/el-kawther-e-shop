@@ -3,6 +3,7 @@ import { Category, Product, Coupon } from '@/types';
 // Import product images
 import frozenMixedVegetables from '@/assets/products/frozen-mixed-vegetables.jpg';
 import frozenPeas from '@/assets/products/frozen-peas.jpg';
+import frozenGreenBeans from '@/assets/products/frozen-green-beans.jpg';
 import frozenOkra from '@/assets/products/frozen-okra.jpg';
 import frozenMolokhia from '@/assets/products/frozen-molokhia.jpg';
 import frozenFries from '@/assets/products/frozen-fries.jpg';
@@ -13,16 +14,24 @@ import mincedBeef from '@/assets/products/minced-beef.jpg';
 import lambChops from '@/assets/products/lamb-chops.jpg';
 import wholeChicken from '@/assets/products/whole-chicken.jpg';
 import frozenKofta from '@/assets/products/frozen-kofta.jpg';
+import halwaniBeefBurger from '@/assets/products/halwani-beef-burger.jpg';
 import egyptianRice from '@/assets/products/egyptian-rice.jpg';
+import rehanaRice from '@/assets/products/rehana-rice.jpg';
 import pastaPenne from '@/assets/products/pasta-penne.jpg';
+import reginaSpaghetti from '@/assets/products/regina-spaghetti.jpg';
 import oliveOil from '@/assets/products/olive-oil.jpg';
 import sugar from '@/assets/products/sugar.jpg';
+import alDohaSugar from '@/assets/products/al-doha-sugar.jpg';
 import lentils from '@/assets/products/lentils.jpg';
 import flour from '@/assets/products/flour.jpg';
 import sunflowerOil from '@/assets/products/sunflower-oil.jpg';
+import crystalSunflowerOil from '@/assets/products/crystal-sunflower-oil.jpg';
 import milk from '@/assets/products/milk.jpg';
+import juhaynaMilk from '@/assets/products/juhayna-milk.jpg';
 import cheese from '@/assets/products/cheese.jpg';
+import domtyCheese from '@/assets/products/domty-cheese.jpg';
 import yogurt from '@/assets/products/yogurt.jpg';
+import juhaynaYogurt from '@/assets/products/juhayna-yogurt.jpg';
 
 export const categories: Category[] = [
   {
@@ -189,8 +198,29 @@ export const products: Product[] = [
     badges: ['new'],
     tags: ['halal', 'frozen', 'egyptian'],
   },
+  {
+    id: 'frozen-7',
+    slug: 'faragello-green-beans',
+    name_ar: 'فرجيلو فاصوليا خضراء مجمدة',
+    name_en: 'Faragello Frozen Green Beans',
+    desc_ar: 'فاصوليا خضراء مجمدة من فرجيلو جاهزة للطهي',
+    desc_en: 'Faragello frozen green beans ready to cook',
+    categoryId: 'frozen',
+    price: 58,
+    currency: 'EGP',
+    images: [frozenGreenBeans],
+    sku: 'FRZ-FRG-007',
+    weightOptions: [
+      { label_ar: '400 جرام', label_en: '400g', grams: 400, priceDelta: 0 },
+      { label_ar: '1 كيلو', label_en: '1kg', grams: 1000, priceDelta: 70 },
+    ],
+    stockQty: 90,
+    isFrozen: true,
+    badges: ['new'],
+    tags: ['halal', 'frozen', 'vegetables', 'brand'],
+  },
 
-  // MEAT (6 products)
+  // MEAT (7 products)
   {
     id: 'meat-1',
     slug: 'beef-cubes',
@@ -319,8 +349,29 @@ export const products: Product[] = [
     badges: ['offer'],
     tags: ['halal', 'frozen', 'beef', 'ready'],
   },
+  {
+    id: 'meat-7',
+    slug: 'halwani-beef-burger',
+    name_ar: 'برجر بقري حلواني',
+    name_en: 'Halwani Beef Burger',
+    desc_ar: 'برجر بقري مجمد من حلواني جاهز للشوي',
+    desc_en: 'Halwani frozen beef burgers ready to grill',
+    categoryId: 'meat',
+    price: 155,
+    currency: 'EGP',
+    images: [halwaniBeefBurger],
+    sku: 'MT-HBW-007',
+    weightOptions: [
+      { label_ar: '400 جرام', label_en: '400g', grams: 400, priceDelta: 0 },
+      { label_ar: '800 جرام', label_en: '800g', grams: 800, priceDelta: 70 },
+    ],
+    stockQty: 65,
+    isFrozen: true,
+    badges: ['new'],
+    tags: ['halal', 'frozen', 'beef', 'brand'],
+  },
 
-  // GROCERY (7 products)
+  // GROCERY (11 products)
   {
     id: 'grocery-1',
     slug: 'egyptian-rice',
@@ -344,6 +395,27 @@ export const products: Product[] = [
     tags: ['halal', 'staple', 'rice'],
   },
   {
+    id: 'grocery-8',
+    slug: 'rehana-rice',
+    name_ar: 'أرز ريهانا',
+    name_en: 'Rehana Rice',
+    desc_ar: 'أرز ريهانا مصري فاخر مناسب للأطباق اليومية',
+    desc_en: 'Premium Rehana Egyptian rice for everyday cooking',
+    categoryId: 'grocery',
+    price: 52,
+    currency: 'EGP',
+    images: [rehanaRice],
+    sku: 'GRC-RHN-008',
+    weightOptions: [
+      { label_ar: '1 كيلو', label_en: '1kg', grams: 1000, priceDelta: 0 },
+      { label_ar: '5 كيلو', label_en: '5kg', grams: 5000, priceDelta: 190 },
+    ],
+    stockQty: 120,
+    isFrozen: false,
+    badges: ['new'],
+    tags: ['halal', 'staple', 'rice', 'brand'],
+  },
+  {
     id: 'grocery-2',
     slug: 'pasta-penne',
     name_ar: 'مكرونة بيني',
@@ -363,6 +435,27 @@ export const products: Product[] = [
     isFrozen: false,
     badges: [],
     tags: ['halal', 'pasta'],
+  },
+  {
+    id: 'grocery-9',
+    slug: 'regina-spaghetti',
+    name_ar: 'مكرونة ريجينا سباجيتي',
+    name_en: 'Regina Spaghetti',
+    desc_ar: 'مكرونة ريجينا سباجيتي عالية الجودة',
+    desc_en: 'High quality Regina spaghetti pasta',
+    categoryId: 'grocery',
+    price: 28,
+    currency: 'EGP',
+    images: [reginaSpaghetti],
+    sku: 'GRC-RGN-009',
+    weightOptions: [
+      { label_ar: '400 جرام', label_en: '400g', grams: 400, priceDelta: 0 },
+      { label_ar: '1 كيلو', label_en: '1kg', grams: 1000, priceDelta: 35 },
+    ],
+    stockQty: 150,
+    isFrozen: false,
+    badges: ['bestseller'],
+    tags: ['halal', 'pasta', 'brand'],
   },
   {
     id: 'grocery-3',
@@ -406,6 +499,27 @@ export const products: Product[] = [
     isFrozen: false,
     badges: [],
     tags: ['halal', 'staple'],
+  },
+  {
+    id: 'grocery-10',
+    slug: 'al-doha-sugar',
+    name_ar: 'سكر الضحى',
+    name_en: 'Al Doha Sugar',
+    desc_ar: 'سكر الضحى الأبيض الناعم للأغراض اليومية',
+    desc_en: 'Fine white Al Doha sugar for daily use',
+    categoryId: 'grocery',
+    price: 38,
+    currency: 'EGP',
+    images: [alDohaSugar],
+    sku: 'GRC-DOH-010',
+    weightOptions: [
+      { label_ar: '1 كيلو', label_en: '1kg', grams: 1000, priceDelta: 0 },
+      { label_ar: '2 كيلو', label_en: '2kg', grams: 2000, priceDelta: 35 },
+    ],
+    stockQty: 210,
+    isFrozen: false,
+    badges: ['new'],
+    tags: ['halal', 'staple', 'brand'],
   },
   {
     id: 'grocery-5',
@@ -472,8 +586,29 @@ export const products: Product[] = [
     badges: ['new'],
     tags: ['halal', 'oil', 'cooking'],
   },
+  {
+    id: 'grocery-11',
+    slug: 'crystal-sunflower-oil',
+    name_ar: 'زيت عباد الشمس كريستال',
+    name_en: 'Crystal Sunflower Oil',
+    desc_ar: 'زيت عباد الشمس كريستال للقلي والاستخدام اليومي',
+    desc_en: 'Crystal sunflower oil for frying and daily cooking',
+    categoryId: 'grocery',
+    price: 92,
+    currency: 'EGP',
+    images: [crystalSunflowerOil],
+    sku: 'GRC-CRY-011',
+    weightOptions: [
+      { label_ar: '1 لتر', label_en: '1L', grams: 1000, priceDelta: 0 },
+      { label_ar: '2 لتر', label_en: '2L', grams: 2000, priceDelta: 75 },
+    ],
+    stockQty: 95,
+    isFrozen: false,
+    badges: ['offer'],
+    tags: ['halal', 'oil', 'brand'],
+  },
 
-  // DAIRY (3 products)
+  // DAIRY (6 products)
   {
     id: 'dairy-1',
     slug: 'fresh-milk',
@@ -537,6 +672,69 @@ export const products: Product[] = [
     isFrozen: false,
     badges: ['offer'],
     tags: ['halal', 'dairy', 'yogurt', 'fruit'],
+  },
+  {
+    id: 'dairy-4',
+    slug: 'juhayna-milk',
+    name_ar: 'لبن جهينة كامل الدسم',
+    name_en: 'Juhayna Full Cream Milk',
+    desc_ar: 'لبن جهينة كامل الدسم مناسب للعائلة',
+    desc_en: 'Juhayna full cream milk for the family',
+    categoryId: 'dairy',
+    price: 29,
+    currency: 'EGP',
+    images: [juhaynaMilk],
+    sku: 'DRY-JHN-004',
+    weightOptions: [
+      { label_ar: '1 لتر', label_en: '1L', grams: 1000, priceDelta: 0 },
+      { label_ar: '6 لتر', label_en: '6L', grams: 6000, priceDelta: 140 },
+    ],
+    stockQty: 140,
+    isFrozen: false,
+    badges: ['bestseller'],
+    tags: ['halal', 'dairy', 'milk', 'brand'],
+  },
+  {
+    id: 'dairy-5',
+    slug: 'domty-white-cheese',
+    name_ar: 'جبنة دومتي بيضاء',
+    name_en: 'Domty White Cheese',
+    desc_ar: 'جبنة دومتي البيضاء بطعم غني وقوام متماسك',
+    desc_en: 'Domty white cheese with a rich, firm texture',
+    categoryId: 'dairy',
+    price: 55,
+    currency: 'EGP',
+    images: [domtyCheese],
+    sku: 'DRY-DOM-005',
+    weightOptions: [
+      { label_ar: '250 جرام', label_en: '250g', grams: 250, priceDelta: 0 },
+      { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 45 },
+    ],
+    stockQty: 110,
+    isFrozen: false,
+    badges: ['new'],
+    tags: ['halal', 'dairy', 'cheese', 'brand'],
+  },
+  {
+    id: 'dairy-6',
+    slug: 'juhayna-yogurt',
+    name_ar: 'زبادي جهينة',
+    name_en: 'Juhayna Yogurt',
+    desc_ar: 'زبادي جهينة الطبيعي بقوام كريمي',
+    desc_en: 'Juhayna natural yogurt with a creamy texture',
+    categoryId: 'dairy',
+    price: 18,
+    currency: 'EGP',
+    images: [juhaynaYogurt],
+    sku: 'DRY-JHY-006',
+    weightOptions: [
+      { label_ar: '170 جرام', label_en: '170g', grams: 170, priceDelta: 0 },
+      { label_ar: '500 جرام', label_en: '500g', grams: 500, priceDelta: 22 },
+    ],
+    stockQty: 160,
+    isFrozen: false,
+    badges: ['offer'],
+    tags: ['halal', 'dairy', 'yogurt', 'brand'],
   },
 ];
 

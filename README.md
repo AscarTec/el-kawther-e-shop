@@ -60,6 +60,15 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Product images index
+
+If you add local product images under `public/assets/products/egypt-products/images` or
+`public/assets/products/local-products/images`, regenerate the lookup index with:
+
+```sh
+node scripts/build-images-index.mjs
+```
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.

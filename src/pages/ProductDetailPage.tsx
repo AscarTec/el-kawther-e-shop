@@ -85,6 +85,9 @@ export default function ProductDetailPage() {
               <img
                 src={product.images[0] || '/placeholder.svg'}
                 alt={isArabic ? product.name_ar : product.name_en}
+                onError={(event) => {
+                  event.currentTarget.src = '/placeholder.svg';
+                }}
                 className="w-full h-full object-cover"
               />
               

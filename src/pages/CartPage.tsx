@@ -99,6 +99,9 @@ export default function CartPage() {
                         <img
                           src={item.product.images[0] || '/placeholder.svg'}
                           alt={isArabic ? item.product.name_ar : item.product.name_en}
+                          onError={(event) => {
+                            event.currentTarget.src = '/placeholder.svg';
+                          }}
                           className="w-full h-full object-cover"
                         />
                       </div>
