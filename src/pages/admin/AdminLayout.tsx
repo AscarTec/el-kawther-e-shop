@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation, Navigate, Outlet } from 'react-router-dom';
 import { 
   LayoutDashboard, Package, ShoppingCart, Ticket, 
-  ChevronLeft, ChevronRight, Menu, X, LogOut, Home
+  ChevronLeft, ChevronRight, Menu, X, LogOut, Home, Boxes
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
@@ -17,6 +17,7 @@ const navItems = [
   { key: 'dashboard', icon: LayoutDashboard, path: '/admin' },
   { key: 'orders', icon: ShoppingCart, path: '/admin/orders' },
   { key: 'products', icon: Package, path: '/admin/products' },
+  { key: 'inventory', icon: Boxes, path: '/admin/inventory' },
   { key: 'coupons', icon: Ticket, path: '/admin/coupons' },
 ];
 
