@@ -20,6 +20,10 @@ import OrderSuccessPage from "./pages/OrderSuccessPage";
 import OrderDetailPage from "./pages/OrderDetailPage";
 import OrdersPage from "./pages/OrdersPage";
 import LoginPage from "./pages/LoginPage";
+import ContactPage from "./pages/ContactPage";
+import AboutPage from "./pages/AboutPage";
+import ShippingPolicyPage from "./pages/ShippingPolicyPage";
+import ReturnsPolicyPage from "./pages/ReturnsPolicyPage";
 import NotFound from "./pages/NotFound";
 
 // Admin Pages
@@ -55,6 +59,10 @@ const App = () => (
                 <Route path="/order/:orderId" element={<OrderDetailPage />} />
                 <Route path="/orders" element={<OrdersPage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/contact" element={<ContactPage />} />
+                <Route path="/about" element={<AboutPage />} />
+                <Route path="/shipping-policy" element={<ShippingPolicyPage />} />
+                <Route path="/returns-policy" element={<ReturnsPolicyPage />} />
                 
                 {/* Admin Routes */}
                 <Route path="/admin" element={<AdminLayout />}>
