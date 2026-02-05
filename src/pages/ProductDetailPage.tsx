@@ -63,6 +63,7 @@ export default function ProductDetailPage() {
     frozen: 'bg-frozen',
     meat: 'bg-meat',
     grocery: 'bg-grocery',
+    dairy: 'bg-dairy',
   };
 
   return (
@@ -84,17 +85,17 @@ export default function ProductDetailPage() {
             <div className="relative aspect-square bg-muted rounded-lg overflow-hidden">
               <div className={cn('absolute top-0 left-0 right-0 h-2', categoryColors[category?.colorToken || 'grocery'])} />
               <img
-                src={product.images[0] || '/placeholder.svg'}
-                alt={isArabic ? product.name_ar : product.name_en}
+                src={product.images[0] || '/assets/products/placeholder.png'}
+                alt={(isArabic ? product.name_ar : product.name_en) || product.name_en || product.name_ar}
                 onError={(event) => {
-                  event.currentTarget.src = '/placeholder.svg';
+                  event.currentTarget.src = '/assets/products/placeholder.png';
                 }}
                 className="w-full h-full object-cover"
               />
               
               {/* Badges */}
               <div className="absolute top-4 start-4 flex flex-col gap-2">
-                {product.badges.map(badge => (
+                {(product.badges ?? []).map((badge) => (
                   <Badge 
                     key={badge} 
                     variant={badge === 'offer' ? 'destructive' : 'secondary'}

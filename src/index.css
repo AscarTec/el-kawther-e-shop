@@ -4,355 +4,227 @@
 @tailwind components;
 @tailwind utilities;
 
-/* EL KAWTHER Design System */
+/* ======================================================
+   EL KAWTHER – DESIGN SYSTEM (Premium Ecommerce)
+   ====================================================== */
+
 @layer base {
   :root {
-    /* Brand Colors */
-    --brand-burgundy: 342 70% 28%;
-    --brand-offwhite: 60 14% 97%;
-    --brand-charcoal: 0 0% 12%;
-    --brand-gold: 38 60% 56%;
-    
-    /* Category Colors */
-    --cat-frozen: 189 52% 54%;
-    --cat-meat: 0 57% 49%;
-    --cat-grocery: 87 35% 38%;
-    
-    /* Neutral Colors */
-    --neutral-light: 40 10% 91%;
-    --neutral-mid: 0 0% 42%;
-    
-    /* Semantic Tokens - Light Mode */
-    --background: 60 14% 97%;
-    --foreground: 0 0% 12%;
-    
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 12%;
-    
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 12%;
-    
-    --primary: 342 70% 28%;
-    --primary-foreground: 60 14% 97%;
-    
-    --secondary: 40 10% 91%;
-    --secondary-foreground: 0 0% 12%;
-    
-    --muted: 40 10% 91%;
-    --muted-foreground: 0 0% 42%;
-    
-    --accent: 38 60% 56%;
-    --accent-foreground: 0 0% 12%;
-    
-    --destructive: 0 57% 49%;
-    --destructive-foreground: 60 14% 97%;
-    
-    --border: 40 10% 85%;
-    --input: 40 10% 85%;
-    --ring: 342 70% 28%;
-    
-    --radius: 0.5rem;
-    
-    /* Category specific */
+    /* ======================
+       BRAND COLOR SCALES
+       ====================== */
+    --burgundy-50: 342 70% 96%;
+    --burgundy-100: 342 70% 90%;
+    --burgundy-300: 342 70% 55%;
+    --burgundy-500: 342 70% 35%;
+    --burgundy-700: 342 70% 28%;
+    --burgundy-900: 342 70% 18%;
+
+    --gold-100: 38 80% 92%;
+    --gold-300: 38 70% 70%;
+    --gold-500: 38 60% 56%;
+    --gold-700: 38 60% 45%;
+
+    /* ======================
+       CATEGORY COLORS
+       ====================== */
     --frozen: 189 52% 54%;
     --meat: 0 57% 49%;
     --grocery: 87 35% 38%;
     --dairy: 210 60% 55%;
-    
-    /* Sidebar */
-    --sidebar-background: 60 14% 97%;
-    --sidebar-foreground: 0 0% 12%;
-    --sidebar-primary: 342 70% 28%;
-    --sidebar-primary-foreground: 60 14% 97%;
-    --sidebar-accent: 40 10% 91%;
-    --sidebar-accent-foreground: 0 0% 12%;
-    --sidebar-border: 40 10% 85%;
-    --sidebar-ring: 342 70% 28%;
+
+    /* ======================
+       SEMANTIC TOKENS
+       ====================== */
+    --background: 60 14% 97%;
+    --foreground: 0 0% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 12%;
+
+    --primary: var(--burgundy-700);
+    --primary-soft: var(--burgundy-300);
+    --primary-foreground: 60 14% 97%;
+
+    --accent: var(--gold-500);
+    --accent-soft: var(--gold-300);
+    --accent-foreground: 0 0% 12%;
+
+    --muted: 40 10% 91%;
+    --muted-foreground: 0 0% 42%;
+
+    --border: 40 10% 85%;
+    --ring: var(--burgundy-500);
+
+    --radius: 0.75rem;
   }
 
+  /* ======================
+     DARK MODE
+     ====================== */
   .dark {
     --background: 0 0% 8%;
     --foreground: 60 14% 97%;
-    
+
     --card: 0 0% 12%;
     --card-foreground: 60 14% 97%;
-    
-    --popover: 0 0% 12%;
-    --popover-foreground: 60 14% 97%;
-    
-    --primary: 342 70% 35%;
-    --primary-foreground: 60 14% 97%;
-    
-    --secondary: 0 0% 18%;
-    --secondary-foreground: 60 14% 97%;
-    
+
+    --primary: var(--burgundy-500);
+    --primary-soft: var(--burgundy-300);
+
+    --accent: var(--gold-700);
+    --accent-soft: var(--gold-300);
+
     --muted: 0 0% 18%;
     --muted-foreground: 0 0% 60%;
-    
-    --accent: 38 60% 50%;
-    --accent-foreground: 0 0% 12%;
-    
-    --destructive: 0 57% 45%;
-    --destructive-foreground: 60 14% 97%;
-    
+
     --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 342 70% 35%;
-    
-    --frozen: 189 52% 50%;
-    --meat: 0 57% 55%;
-    --grocery: 87 35% 45%;
-    
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 60 14% 97%;
-    --sidebar-primary: 342 70% 35%;
-    --sidebar-primary-foreground: 60 14% 97%;
-    --sidebar-accent: 0 0% 18%;
-    --sidebar-accent-foreground: 60 14% 97%;
-    --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 342 70% 35%;
+    --ring: var(--burgundy-500);
   }
-  
+
   * {
     @apply border-border;
   }
-  
+
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', 'IBM Plex Sans Arabic', sans-serif;
   }
-  
-  /* RTL Support */
+
   html[dir="rtl"] body {
     font-family: 'IBM Plex Sans Arabic', 'Inter', sans-serif;
   }
-  
-  /* Typography */
-  h1, h2, h3, h4, h5, h6 {
+
+  h1, h2, h3, h4, h5 {
     @apply font-semibold tracking-tight;
   }
-  
-  h1 {
-    @apply text-4xl md:text-5xl font-bold;
-  }
-  
-  h2 {
-    @apply text-2xl md:text-3xl font-semibold;
-  }
-  
-  h3 {
-    @apply text-xl md:text-2xl font-medium;
-  }
-  
-  /* Number styling */
+
+  h1 { @apply text-4xl md:text-5xl font-bold; }
+  h2 { @apply text-2xl md:text-3xl; }
+  h3 { @apply text-xl md:text-2xl; }
+
   .price-value {
     @apply font-semibold tabular-nums;
   }
 }
 
-@layer components {
-  /* Pattern backgrounds */
-  .bg-pattern-light {
-    background-image: url('/src/assets/pattern-light.png');
-    background-size: 400px;
-    background-repeat: repeat;
-  }
-  
-  .bg-pattern-dark {
-    background-image: url('/src/assets/pattern-dark.png');
-    background-size: 400px;
-    background-repeat: repeat;
-  }
-  
-  .bg-pattern {
-    @apply bg-pattern-light dark:bg-pattern-dark;
-    opacity: 0.08;
-  }
-  
-  /* Category badges */
-  .badge-frozen {
-    @apply bg-frozen/15 text-frozen border-frozen/30;
-  }
-  
-  .badge-meat {
-    @apply bg-meat/15 text-meat border-meat/30;
-  }
-  
-  .badge-grocery {
-    @apply bg-grocery/15 text-grocery border-grocery/30;
-  }
-  
-  /* Category stripes */
-  .stripe-frozen {
-    @apply bg-frozen;
-  }
-  
-  .stripe-meat {
-    @apply bg-meat;
-  }
-  
-  .stripe-grocery {
-    @apply bg-grocery;
-  }
-  
-  /* Hero section styling */
-  .hero-gradient {
-    background:
-      radial-gradient(120% 120% at 10% 10%, hsla(152, 16%, 42%, 0.35), transparent 60%),
-      radial-gradient(120% 120% at 90% 20%, hsla(22, 86%, 15%, 0.35), transparent 60%),
-      linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(336 70% 28%) 55%, hsl(22 86% 52%) 100%);
-  }
+/* ======================================================
+   COMPONENTS
+   ====================================================== */
 
+@layer components {
+  /* ======================
+     HERO / CAROUSEL
+     ====================== */
   .hero-carousel {
     position: relative;
     height: 18rem;
-    width: 100%;
     border-radius: 1.75rem;
     overflow: hidden;
     box-shadow: 0 30px 60px -30px rgba(15, 23, 42, 0.65);
   }
 
-  @media (min-width: 768px) {
-    .hero-carousel {
-      height: 20rem;
-    }
-  }
-
   @media (min-width: 1024px) {
-    .hero-carousel {
-      height: 24rem;
-    }
+    .hero-carousel { height: 24rem; }
   }
 
-  .hero-slide {
+  .hero-gradient {
+    background:
+      radial-gradient(
+        120% 120% at 15% 15%,
+        hsla(var(--accent), 0.35),
+        transparent 60%
+      ),
+      radial-gradient(
+        140% 140% at 85% 25%,
+        hsla(var(--primary), 0.45),
+        transparent 55%
+      ),
+      linear-gradient(
+        135deg,
+        hsl(var(--burgundy-900)) 0%,
+        hsl(var(--burgundy-700)) 40%,
+        hsl(var(--accent)) 100%
+      );
+  }
+
+  .hero-carousel::after {
+    content: "";
     position: absolute;
     inset: 0;
-    background-size: cover, 220px, cover;
-    background-position: center;
-    background-blend-mode: screen, overlay, normal;
-    animation: heroFade 18s infinite;
-    opacity: 0;
-    transform: scale(1.02);
-  }
-
-  .hero-side-image {
-    display: none;
-    position: absolute;
-    top: 50%;
-    width: 220px;
-    height: auto;
-    opacity: 0.35;
-    filter: drop-shadow(0 20px 35px rgba(15, 23, 42, 0.35));
-    transform: translateY(-50%);
+    background-image: url("/src/assets/noise.png");
+    opacity: 0.04;
+    mix-blend-mode: overlay;
     pointer-events: none;
   }
 
-  @media (min-width: 1024px) {
-    .hero-side-image {
-      display: block;
-    }
+  /* ======================
+     CATEGORY BADGES
+     ====================== */
+  .badge {
+    @apply inline-flex items-center rounded-full border px-3 py-1 text-sm font-medium;
   }
 
-  .hero-side-left {
-    left: -3rem;
-    transform: translateY(-50%) rotate(-8deg);
+  .badge-frozen {
+    background: linear-gradient(
+      135deg,
+      hsla(var(--frozen), 0.25),
+      hsla(var(--frozen), 0.05)
+    );
+    color: hsl(var(--frozen));
+    border-color: hsla(var(--frozen), 0.35);
   }
 
-  .hero-side-right {
-    right: -3rem;
-    transform: translateY(-50%) rotate(8deg);
+  .badge-meat {
+    background: linear-gradient(
+      135deg,
+      hsla(var(--meat), 0.25),
+      hsla(var(--meat), 0.05)
+    );
+    color: hsl(var(--meat));
+    border-color: hsla(var(--meat), 0.35);
   }
-  
-  /* Gold accent styling */
-  .text-gold {
-    color: hsl(var(--accent));
+
+  .badge-grocery {
+    background: linear-gradient(
+      135deg,
+      hsla(var(--grocery), 0.25),
+      hsla(var(--grocery), 0.05)
+    );
+    color: hsl(var(--grocery));
+    border-color: hsla(var(--grocery), 0.35);
   }
-  
-  .bg-gold {
-    background-color: hsl(var(--accent));
-  }
-  
-  /* Card hover effects */
+
+  /* ======================
+     CARDS
+     ====================== */
   .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
-  }
-  
-  /* RTL-aware spacing */
-  [dir="rtl"] .space-ltr {
-    @apply space-x-reverse;
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
   }
 }
+
+/* ======================================================
+   UTILITIES & ANIMATIONS
+   ====================================================== */
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-  
+  .text-balance { text-wrap: balance; }
+
   .animate-fade-in {
-    animation: fadeIn 0.5s ease-out;
+    animation: fadeIn 0.5s ease-out both;
   }
-  
+
   @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  
+
   .animate-slide-up {
-    animation: slideUp 0.4s ease-out;
+    animation: slideUp 0.4s ease-out both;
   }
-  
+
   @keyframes slideUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-/* Splash animations */
-@keyframes splash-flash {
-  0%, 100% { opacity: 0; transform: scale(0.6); }
-  20% { opacity: 1; transform: scale(1); }
-  40% { opacity: 0.2; transform: scale(1.15); }
-  60% { opacity: 1; transform: scale(1); }
-}
-
-@keyframes splash-logo-in {
-  0% { opacity: 0; transform: translateY(10px) scale(0.92); filter: blur(6px); }
-  100% { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
-}
-
-@keyframes splash-logo-move-up {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  100% { transform: translate(-50%, -170%) scale(0.55); opacity: 0; }
-}
-
-  @keyframes heroFade {
-    0% {
-      opacity: 0;
-      transform: scale(1.02);
-    }
-    6% {
-      opacity: 1;
-    }
-    30% {
-      opacity: 1;
-    }
-    36% {
-      opacity: 0;
-      transform: scale(1.06);
-    }
-    100% {
-      opacity: 0;
-      transform: scale(1.06);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 }

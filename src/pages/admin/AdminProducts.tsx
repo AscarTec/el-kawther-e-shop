@@ -198,10 +198,10 @@ export default function AdminProducts() {
                   <TableRow key={product.id}>
                     <TableCell>
                       <img
-                        src={product.images[0]}
+                        src={product.images[0] || '/assets/products/placeholder.png'}
                         alt=""
                         onError={(event) => {
-                          event.currentTarget.src = '/placeholder.svg';
+                          event.currentTarget.src = '/assets/products/placeholder.png';
                         }}
                         className="w-12 h-12 rounded-lg object-cover"
                       />

@@ -4,7 +4,7 @@ import { Snowflake, Drumstick, Wheat, ShoppingCart, Milk } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Product, Category } from '@/types';
+import { Product } from '@/types';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useStore } from '@/contexts/StoreContext';
 import { cn } from '@/lib/utils';
@@ -20,6 +20,13 @@ const categoryColors = {
   dairy: 'bg-dairy',
 };
 
+const categoryTextColors = {
+  frozen: 'text-frozen',
+  meat: 'text-meat',
+  grocery: 'text-grocery',
+  dairy: 'text-dairy',
+};
+
 const categoryIcons = {
   frozen: Snowflake,
   meat: Drumstick,
@@ -33,9 +40,10 @@ export function ProductCard({ product }: ProductCardProps) {
   const category = getCategoryById(product.categoryId);
   const company = getCompanyById(product.companyId);
 
-  const name = isArabic ? product.name_ar : product.name_en;
-  const baseWeight = product.weightOptions[0];
-  const weightLabel = isArabic ? baseWeight?.label_ar : baseWeight?.label_en;
+  const name = (isArabic ? product.name_ar : product.name_en) || product.name_en || product.name_ar;
+  const imageSrc = product.images?.[0] || '/assets/products/placeholder.png';
+  const baseWeight = product.weightOptions?.[0];
+  const weightLabel = (isArabic ? baseWeight?.label_ar : baseWeight?.label_en) || '';
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
@@ -62,17 +70,18 @@ export function ProductCard({ product }: ProductCardProps) {
         
         <div className="relative aspect-square bg-muted overflow-hidden">
           <img 
-            src={product.images[0] || '/placeholder.svg'} 
+            src={imageSrc} 
             alt={name}
             onError={(event) => {
-              event.currentTarget.src = '/placeholder.svg';
+              event.currentTarget.src = '/assets/products/placeholder.png';
             }}
+            loading="lazy"
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
           
           {/* Badges */}
           <div className="absolute top-2 start-2 flex flex-col gap-1">
-            {product.badges.map(badge => (
+            {(product.badges ?? []).map((badge) => (
               <Badge 
                 key={badge} 
                 variant={badge === 'offer' ? 'destructive' : 'secondary'}
@@ -100,10 +109,10 @@ export function ProductCard({ product }: ProductCardProps) {
         <CardContent className="p-4 space-y-3">
           {/* Category label */}
           <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
-            {category && React.createElement(categoryIcons[category.colorToken], { 
-              className: cn('h-3.5 w-3.5', `text-${category.colorToken}`)
+            {category && React.createElement(categoryIcons[category.colorToken] ?? Wheat, {
+              className: cn('h-3.5 w-3.5', categoryTextColors[category.colorToken] ?? 'text-foreground')
             })}
-            <span>{isArabic ? category?.name_ar : category?.name_en}</span>
+            <span>{(isArabic ? category?.name_ar : category?.name_en) || category?.name_en || category?.name_ar}</span>
           </div>
 
           {/* Product name */}
@@ -113,12 +122,12 @@ export function ProductCard({ product }: ProductCardProps) {
 
           {company && (
             <p className="text-xs text-muted-foreground">
-              {isArabic ? company.name_ar : company.name_en}
+              {(isArabic ? company.name_ar : company.name_en) || company.name_en || company.name_ar}
             </p>
           )}
 
           {/* Weight */}
-          <p className="text-sm text-muted-foreground">{weightLabel}</p>
+          {weightLabel && <p className="text-sm text-muted-foreground">{weightLabel}</p>}
 
           {/* Price row */}
           <div className="flex items-center justify-between gap-2">

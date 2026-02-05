@@ -97,10 +97,10 @@ export default function CartPage() {
                     <Link to={`/product/${item.product.slug}`} className="shrink-0">
                       <div className="w-24 h-24 bg-muted rounded-md overflow-hidden">
                         <img
-                          src={item.product.images[0] || '/placeholder.svg'}
-                          alt={isArabic ? item.product.name_ar : item.product.name_en}
+                          src={item.product.images[0] || '/assets/products/placeholder.png'}
+                          alt={(isArabic ? item.product.name_ar : item.product.name_en) || item.product.name_en || item.product.name_ar}
                           onError={(event) => {
-                            event.currentTarget.src = '/placeholder.svg';
+                            event.currentTarget.src = '/assets/products/placeholder.png';
                           }}
                           className="w-full h-full object-cover"
                         />

@@ -8,6 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useStore } from '@/contexts/StoreContext';
 import { Order } from '@/types';
+import { cn } from '@/lib/utils';
 
 export default function AdminDashboard() {
   const { t, isArabic } = useLanguage();
@@ -181,10 +182,10 @@ export default function AdminDashboard() {
                   <div key={product.id} className="flex items-center justify-between p-3 border border-red-200 dark:border-red-900/50 bg-red-50 dark:bg-red-900/20 rounded-lg">
                     <div className="flex items-center gap-3">
                       <img 
-                        src={product.images[0]} 
+                        src={product.images[0] || '/assets/products/placeholder.png'}
                         alt="" 
                         onError={(event) => {
-                          event.currentTarget.src = '/placeholder.svg';
+                          event.currentTarget.src = '/assets/products/placeholder.png';
                         }}
                         className="w-10 h-10 rounded object-cover"
                       />
@@ -217,7 +218,17 @@ export default function AdminDashboard() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {productsByCategory.map(cat => (
               <div key={cat.id} className="text-center p-4 border rounded-lg">
-                <Package className={`h-8 w-8 mx-auto mb-2 text-${cat.colorToken}`} />
+                <Package
+                  className={cn(
+                    'h-8 w-8 mx-auto mb-2',
+                    {
+                      frozen: 'text-frozen',
+                      meat: 'text-meat',
+                      grocery: 'text-grocery',
+                      dairy: 'text-dairy',
+                    }[cat.colorToken] ?? 'text-foreground',
+                  )}
+                />
                 <p className="text-2xl font-bold">{cat.count}</p>
                 <p className="text-sm text-muted-foreground">
                   {isArabic ? cat.name_ar : cat.name_en}

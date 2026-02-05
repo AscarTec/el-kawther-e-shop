@@ -27,9 +27,13 @@ export default function HomePage() {
   const { t, isArabic } = useLanguage();
   const { products, categories, getProductsByCategory } = useStore();
 
-  const featuredProducts = products
-    .filter((p) => p.badges.includes("bestseller") || p.badges.includes("new"))
-    .slice(0, 8);
+  const featuredBase = products.filter(
+    (p) => p.badges.includes("bestseller") || p.badges.includes("new")
+  );
+  const featuredProducts = [
+    ...featuredBase,
+    ...products.filter((p) => !featuredBase.includes(p)),
+  ].slice(0, 12);
 
   const getCategoryCount = (catId: string) => getProductsByCategory(catId).length;
 
@@ -53,7 +57,7 @@ export default function HomePage() {
   return (
     <Layout>
       {/* HERO: Full width + responsive height */}
-      <section className="relative w-full  overflow-hidden">
+      <section className="relative w-full overflow-hidden">
         <FullBleedBackgroundSlider
           images={bgSlides}
           isArabic={isArabic}
@@ -68,6 +72,37 @@ export default function HomePage() {
           showArrows
           showDots
         />
+        <div className="absolute inset-0 z-10 flex items-center">
+          <div className="container">
+            <div className="max-w-2xl space-y-4 text-white">
+              <p className="text-sm md:text-base uppercase tracking-[0.2em] text-white/80">
+                {isArabic ? "توريد موثوق" : "Trusted Supply"}
+              </p>
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                {t("home.hero.title")}
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl text-white/90">
+                {t("home.hero.subtitle")}
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link to="/products">
+                  <Button size="lg" variant="secondary">
+                    {t("home.hero.cta")}
+                  </Button>
+                </Link>
+                <Link to="/categories">
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    className="border-white/60 text-white hover:bg-white/10"
+                  >
+                    {t("home.categories.title")}
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Categories Section */}
@@ -148,7 +183,7 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-6">
             {featuredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}

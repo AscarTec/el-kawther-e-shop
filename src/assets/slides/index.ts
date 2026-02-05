@@ -6,6 +6,3 @@
     export { default as slide4 } from './slide-4.png'; 
     export { default as slide5 } from './slide-5.png'; 
     export { default as slide6 } from './slide-6.png'; 
-    export { default as slide7 } from './slide-7.png'; 
-    export { default as slide8 } from './slide-8.png'; 
-

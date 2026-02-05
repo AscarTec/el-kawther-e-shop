@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Search, SlidersHorizontal, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
@@ -25,6 +25,33 @@ export default function ProductsPage() {
   const [inStockOnly, setInStockOnly] = useState(false);
   const [frozenOnly, setFrozenOnly] = useState(false);
   const [sortBy, setSortBy] = useState<SortOption>((searchParams.get('sort') as SortOption) || 'newest');
+
+  const resolveCategoryId = useCallback(
+    (value: string | null) => {
+      if (!value || value === 'all') {
+        return 'all';
+      }
+      const normalized = value.toLowerCase();
+      const match = categories.find(
+        (cat) =>
+          cat.id === value ||
+          cat.slug === value ||
+          cat.colorToken === value ||
+          cat.id.toLowerCase() === normalized ||
+          cat.slug?.toLowerCase() === normalized ||
+          cat.colorToken?.toLowerCase() === normalized,
+      );
+      return match?.id ?? value;
+    },
+    [categories],
+  );
+
+  useEffect(() => {
+    const resolvedCategory = resolveCategoryId(searchParams.get('category'));
+    if (resolvedCategory !== selectedCategory) {
+      setSelectedCategory(resolvedCategory);
+    }
+  }, [resolveCategoryId, searchParams, selectedCategory]);
 
   const filteredProducts = useMemo(() => {
     let result = [...products];

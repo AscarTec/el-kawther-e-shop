@@ -12,8 +12,12 @@ interface CompanyTileProps {
 
 export function CompanyTile({ company, productCount }: CompanyTileProps) {
   const { isArabic, t } = useLanguage();
-  const name = isArabic ? company.name_ar : company.name_en;
-  const description = isArabic ? company.description_ar : company.description_en;
+  const name = (isArabic ? company.name_ar : company.name_en) || company.name_en || company.name_ar;
+  const description =
+    (isArabic ? company.description_ar : company.description_en) ||
+    company.description_en ||
+    company.description_ar ||
+    '';
 
   return (
     <Link to={`/products?company=${company.id}`}>
@@ -32,7 +36,7 @@ export function CompanyTile({ company, productCount }: CompanyTileProps) {
               )}
             </div>
           </div>
-          <p className="text-sm text-muted-foreground">{description}</p>
+          <p className="text-sm text-muted-foreground">{description || t('common.noResults')}</p>
         </CardContent>
       </Card>
     </Link>
