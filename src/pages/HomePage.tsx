@@ -18,9 +18,7 @@ import {
   slide3,
   slide4,
   slide5,
-  slide6,
-  slide7,
-  slide8,
+  slide6, 
 } from "@/assets/slides";
 
 export default function HomePage() {
@@ -49,9 +47,7 @@ export default function HomePage() {
     { src: slide3, alt: "slide 3" },
     { src: slide4, alt: "slide 4" },
     { src: slide5, alt: "slide 5" },
-    { src: slide6, alt: "slide 6" },
-    { src: slide7, alt: "slide 7" },
-    { src: slide8, alt: "slide 8" },
+    { src: slide6, alt: "slide 6" }, 
   ];
 
   return (
